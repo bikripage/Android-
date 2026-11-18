@@ -1,3 +1,4 @@
+
 name: Build Android APK
 
 on:
@@ -15,45 +16,54 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 1. Checkout Repository
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # 2. Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
 
+      # 3. Setup Java
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 17
 
+      # 4. Setup Android SDK
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
         with:
           accept-android-sdk-licenses: true
           log-accepted-android-sdk-licenses: false
 
+      # 5. Install Dependencies
       - name: Install dependencies
         run: npm install
 
+      # 6. Build Web App
       - name: Build web app
         run: npm run build
 
+      # 7. Add Android Platform
       - name: Add Android platform
         run: npx cap add android
 
+      # 8. Sync Capacitor
       - name: Sync Capacitor
         run: npx cap sync android
 
+      # 9. Build Debug APK
       - name: Build Debug APK
         run: |
           cd android
           chmod +x gradlew
           ./gradlew assembleDebug --no-daemon
 
+      # 10. Upload APK
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
