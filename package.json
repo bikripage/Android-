@@ -1,0 +1,21 @@
+{
+  "name": "smart-print-desk-android",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Capacitor Android wrapper for Smart Print Desk",
+  "scripts": {
+    "start": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "android:init": "cap add android",
+    "android:sync": "cap sync android",
+    "android:open": "cap open android"
+  },
+  "dependencies": {
+    "@capacitor/core": "^6.1.2",
+    "@capacitor/android": "^6.1.2",
+    "@capacitor/cli": "^6.1.2"
+  },
+  "devDependencies": {
+    "vite": "^5.4.8"
+  }
+}
