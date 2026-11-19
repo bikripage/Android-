@@ -1,0 +1,8 @@
+{
+  "appId": "com.bikripage.smartprint",
+  "appName": "Smart Print Desk",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  }
+}
